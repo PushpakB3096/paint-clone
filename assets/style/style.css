@@ -1,3 +1,10 @@
+/* global */
+@import url("https://fonts.googleapis.com/css?family=Oswald&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
 /* for tool bar */
 .top-bar {
   padding-left: 15px;
