@@ -53,6 +53,9 @@ function switchToBrush() {
   eraser.style.color = "white";
   currentColor = `#${brushColorBtn.value}`;
   currentSize = 10;
+  // on switch back to brush, need to reset the tool size and display it
+  brushSlider.value = currentSize;
+  displayBrushSize();
 }
 
 // after user changes the brush size, this function is called to display the new size
