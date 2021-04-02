@@ -37,6 +37,8 @@ function createCanvas() {
   canvasCtx.fillStyle = bucketColor;
   canvasCtx.fillRect(0, 0, canvasEl.width, canvasEl.height);
   body.appendChild(canvasEl);
+  // on canvas create, switch user to the brush tool
+  switchToBrush();
 }
 
 // function that will switch the user back to using the brush
