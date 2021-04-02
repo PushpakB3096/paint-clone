@@ -48,6 +48,10 @@ body {
   color: rgb(223, 37, 37);
 }
 
+.fa-fill-drip {
+  cursor: default;
+}
+
 /* for the active tool */
 .active-tool {
   position: absolute;

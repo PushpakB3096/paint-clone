@@ -13,6 +13,9 @@ const loadStorageBtn = document.getElementById("load-storage");
 const clearStorageBtn = document.getElementById("clear-storage");
 const downloadBtn = document.getElementById("download");
 
+/* space for all the constants */
+const BRUSH_TIME = 1500;
+
 /* global variables must be added here */
 let currentSize = 10;
 let bucketColor = "#FFFFFF";
@@ -68,6 +71,11 @@ function switchToBrush() {
   // on switch back to brush, need to reset the tool size and display it
   brushSlider.value = currentSize;
   displayBrushSize();
+}
+
+// function that will reset default view of the app
+function brushTimeSetTimeout(ms) {
+  setTimeout(switchToBrush, ms);
 }
 
 // after user changes the brush size, this function is called to display the new size
@@ -136,8 +144,8 @@ clearCanvasBtn.addEventListener("click", () => {
   drawnArray = [];
   // displays a message to notify user of the action
   activeToolEl.textContent = "Canvas Cleared";
-  // after 1.5 seconds, switch to the brush tool
-  setTimeout(switchToBrush, 1500);
+  // after a certain time, switch to the brush tool
+  brushTimeSetTimeout(BRUSH_TIME);
 });
 
 /* event listeners will go here */
@@ -232,7 +240,7 @@ saveStorageBtn.addEventListener("click", () => {
   // display to the user that the contents have been saved
   activeToolEl.textContent = "Canvas Saved";
   // switch to the default view
-  setTimeout(switchToBrush, 1500);
+  brushTimeSetTimeout(BRUSH_TIME);
 });
 
 // Load from Local Storage
@@ -241,27 +249,25 @@ loadStorageBtn.addEventListener("click", () => {
   const localStrgContent = localStorage.getItem("savedCanvas");
   // drawArray will be filled with data only if the content is there
   if (localStrgContent) {
-    console.log(localStrgContent);
     drawnArray = JSON.parse(localStrgContent);
     // redraw the canvas using the drawnArray
     restoreCanvas();
     // display to the user that the contents have been loaded from local storage
     activeToolEl.textContent = "Canvas Loaded";
-    // switch to the default view
-    setTimeout(switchToBrush, 1500);
   } else {
     // display to the user that the canvas was empty
     activeToolEl.textContent = "Canvas Not Found";
-    // switch to the default view
-    setTimeout(switchToBrush, 1500);
   }
+  // switch to the default view
+  brushTimeSetTimeout(BRUSH_TIME);
 });
 
 // removes the saved canvas from the local storage
 clearStorageBtn.addEventListener("click", () => {
   localStorage.removeItem("savedCanvas");
   activeToolEl.textContent = "Local Storage Cleared";
-  setTimeout(switchToBrush, 1500);
+  // switch to the default view
+  brushTimeSetTimeout(BRUSH_TIME);
 });
 
 // download and save current canvas image
@@ -273,7 +279,8 @@ downloadBtn.addEventListener("click", () => {
 
   // display the message that the canvas has been saved
   activeToolEl.textContent = "Image File Saved";
-  setTimeout(switchToBrush, 1500);
+  // switch to the default view
+  brushTimeSetTimeout(BRUSH_TIME);
 });
 
 /* functions to call on load */
