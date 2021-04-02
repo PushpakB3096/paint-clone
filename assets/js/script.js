@@ -11,6 +11,7 @@ const clearCanvasBtn = document.getElementById("clear-canvas");
 const saveStorageBtn = document.getElementById("save-storage");
 const loadStorageBtn = document.getElementById("load-storage");
 const clearStorageBtn = document.getElementById("clear-storage");
+const downloadBtn = document.getElementById("download");
 
 /* global variables must be added here */
 let currentSize = 10;
@@ -260,6 +261,18 @@ loadStorageBtn.addEventListener("click", () => {
 clearStorageBtn.addEventListener("click", () => {
   localStorage.removeItem("savedCanvas");
   activeToolEl.textContent = "Local Storage Cleared";
+  setTimeout(switchToBrush, 1500);
+});
+
+// download and save current canvas image
+downloadBtn.addEventListener("click", () => {
+  // takes the canvas content and creates a URL. The file type is PNG and the image quality is 1 (highest possible)
+  downloadBtn.href = canvasEl.toDataURL("image/png", 1);
+  // sets the file name
+  downloadBtn.download = "paint-clone-by-pushpak-bhattacharya.png";
+
+  // display the message that the canvas has been saved
+  activeToolEl.textContent = "Image File Saved";
   setTimeout(switchToBrush, 1500);
 });
 
