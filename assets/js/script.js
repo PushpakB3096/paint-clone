@@ -37,6 +37,7 @@ function createCanvas() {
   canvasEl.width = window.innerWidth;
   canvasEl.height = window.innerHeight - 50;
   canvasCtx.fillStyle = bucketColor;
+  // the background of the canvas is actually just a big rectangle
   canvasCtx.fillRect(0, 0, canvasEl.width, canvasEl.height);
   body.appendChild(canvasEl);
   // on canvas create, switch user to the brush tool
@@ -71,6 +72,15 @@ function displayBrushSize() {
   if (currentSize < 10) {
     brushSize.textContent = `0${brushSizeVal}`;
   }
+}
+
+// function to fetch the current mouse position
+function getMousePosition(event) {
+  const boundaries = canvasEl.getBoundingClientRect();
+  return {
+    x: event.clientX - boundaries.left,
+    y: event.clientY - boundaries.top,
+  };
 }
 
 /* event listeners will go here */
