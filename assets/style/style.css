@@ -69,6 +69,25 @@ body {
   user-select: none;
 }
 
+.tool {
+  position: relative;
+  top: 3px;
+}
+
+.tool:not(:first-child) {
+  margin-left: 8px;
+}
+
+.brush {
+  background-color: rgb(114, 114, 114);
+  height: 44px;
+  width: 345px;
+}
+
+.brush > * {
+  margin-left: 10px;
+}
+
 /* for brush size display */
 .size {
   min-width: 40px;
