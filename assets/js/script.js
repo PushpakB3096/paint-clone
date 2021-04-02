@@ -7,6 +7,7 @@ const eraser = document.getElementById("eraser");
 const activeToolEl = document.getElementById("active-tool");
 const brushSlider = document.getElementById("brush-slider");
 const brushSize = document.getElementById("brush-size");
+const clearCanvasBtn = document.getElementById("clear-canvas");
 
 /* global variables must be added here */
 let currentSize = 10;
@@ -100,6 +101,39 @@ function storeDrawn(x, y, size, color, erase) {
   };
   drawnArray.push(line);
 }
+
+// this function will redraw the lines based on content of drawnArray
+function restoreCanvas() {
+  for (let i = 1; i < drawnArray.length; i++) {
+    canvasCtx.beginPath();
+    // move the pointer to just near the point of drawing
+    canvasCtx.moveTo(drawnArray[i - 1].x, drawnArray[i - 1].y);
+    // the width of the drawn line will be stored in 'size' property
+    canvasCtx.lineWidth = drawnArray[i].size;
+    canvasCtx.lineCap = "round";
+
+    // if the eraser was selected, then draw with canvas color. Otherwise, use the 'color' property to draw
+    if (drawnArray[i].eraser) {
+      canvasCtx.strokeStyle = bucketColor;
+    } else {
+      canvasCtx.strokeStyle = drawnArray[i].color;
+    }
+
+    // actually draw the lines
+    canvasCtx.lineTo(drawnArray[i].x, drawnArray[i].y);
+    canvasCtx.stroke();
+  }
+}
+
+// function to clear the canvas
+clearCanvasBtn.addEventListener("click", () => {
+  createCanvas();
+  drawnArray = [];
+  // displays a message to notify user of the action
+  activeToolEl.textContent = "Canvas Cleared";
+  // after 1.5 seconds, switch to the brush tool
+  setTimeout(switchToBrush, 1500);
+});
 
 /* event listeners will go here */
 
