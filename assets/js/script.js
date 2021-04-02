@@ -1,9 +1,11 @@
 /* getting all elements */
 const { body } = document;
+const bucketColorBtn = document.getElementById("bucket-color");
 
 /* global variables must be added here */
-
+let currentSize = 10;
 let bucketColor = "#FFFFFF";
+let currentColor = "#A51DAB";
 
 // creating the main canvas element in global scope
 const canvasEl = document.createElement("canvas");
@@ -26,6 +28,16 @@ function createCanvas() {
   canvasCtx.fillRect(0, 0, canvasEl.width, canvasEl.height);
   body.appendChild(canvasEl);
 }
+
+/* event listeners will go here */
+
+// Setting Background Color
+bucketColorBtn.addEventListener("change", () => {
+  // setting the color of the bucket based on user selection
+  bucketColor = `#${bucketColorBtn.value}`;
+  // fill the canvas with the new color selected
+  createCanvas();
+});
 
 /* functions to call on load */
 createCanvas();
