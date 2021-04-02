@@ -18,6 +18,12 @@ let currentColor = "#A51DAB";
  * with the brush color or with the canvas color.
  */
 let isEraser = false;
+let isMouseDown = false;
+/**
+ * Upon switching the canvas color, the lines drawn are lost. We need to store the drawn lines
+ * so that we can recreate it after the canvas color is changed.
+ */
+let drawnArray = [];
 
 // creating the main canvas element in global scope
 const canvasEl = document.createElement("canvas");
@@ -83,6 +89,18 @@ function getMousePosition(event) {
   };
 }
 
+// for storing all the drawn lines in drawnArray
+function storeDrawn(x, y, size, color, erase) {
+  const line = {
+    x,
+    y,
+    size,
+    color,
+    erase,
+  };
+  drawnArray.push(line);
+}
+
 /* event listeners will go here */
 
 // Setting Background Color
@@ -125,6 +143,46 @@ brushSlider.addEventListener("change", () => {
 
 // clicking on the brush icon should switch user back to using the brush
 brushIcon.addEventListener("click", switchToBrush);
+
+// handles event when mouse button is clicked
+canvasEl.addEventListener("mousedown", (event) => {
+  isMouseDown = true;
+  // gets the current mouse position in x-y coordinates
+  const currentPosition = getMousePosition(event);
+  // moves canvas ctx to the current mouse position and begins drawing
+  canvasCtx.moveTo(currentPosition.x, currentPosition.y);
+  canvasCtx.beginPath();
+  // sets the style and width of the drawing line
+  canvasCtx.lineWidth = currentSize;
+  canvasCtx.lineCap = "round";
+  canvasCtx.strokeStyle = currentColor;
+});
+
+// handles movement of mouse when clicked
+canvasEl.addEventListener("mousemove", (event) => {
+  // only draw when mouse button is clicked
+  if (isMouseDown) {
+    // gets the current mouse position in x-y coordinates
+    const currentPosition = getMousePosition(event);
+    canvasCtx.lineTo(currentPosition.x, currentPosition.y);
+    canvasCtx.stroke();
+    // stores the currently drawn line
+    storeDrawn(
+      currentPosition.x,
+      currentPosition.y,
+      currentSize,
+      currentColor,
+      isEraser
+    );
+  } else {
+    storeDrawn(undefined);
+  }
+});
+
+// handles mouse un-click
+canvasEl.addEventListener("mouseup", () => {
+  isMouseDown = false;
+});
 
 /* functions to call on load */
 createCanvas();
