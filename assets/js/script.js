@@ -8,6 +8,9 @@ const activeToolEl = document.getElementById("active-tool");
 const brushSlider = document.getElementById("brush-slider");
 const brushSize = document.getElementById("brush-size");
 const clearCanvasBtn = document.getElementById("clear-canvas");
+const saveStorageBtn = document.getElementById("save-storage");
+const loadStorageBtn = document.getElementById("load-storage");
+const clearStorageBtn = document.getElementById("clear-storage");
 
 /* global variables must be added here */
 let currentSize = 10;
@@ -219,6 +222,45 @@ canvasEl.addEventListener("mousemove", (event) => {
 // handles mouse un-click
 canvasEl.addEventListener("mouseup", () => {
   isMouseDown = false;
+});
+
+// save canvas to the local storage
+saveStorageBtn.addEventListener("click", () => {
+  // save the contents of drawnArray to the local storage
+  localStorage.setItem("savedCanvas", JSON.stringify(drawnArray));
+  // display to the user that the contents have been saved
+  activeToolEl.textContent = "Canvas Saved";
+  // switch to the default view
+  setTimeout(switchToBrush, 1500);
+});
+
+// Load from Local Storage
+loadStorageBtn.addEventListener("click", () => {
+  // gets the content of the localstorage
+  const localStrgContent = localStorage.getItem("savedCanvas");
+  // drawArray will be filled with data only if the content is there
+  if (localStrgContent) {
+    console.log(localStrgContent);
+    drawnArray = JSON.parse(localStrgContent);
+    // redraw the canvas using the drawnArray
+    restoreCanvas();
+    // display to the user that the contents have been loaded from local storage
+    activeToolEl.textContent = "Canvas Loaded";
+    // switch to the default view
+    setTimeout(switchToBrush, 1500);
+  } else {
+    // display to the user that the canvas was empty
+    activeToolEl.textContent = "Canvas Not Found";
+    // switch to the default view
+    setTimeout(switchToBrush, 1500);
+  }
+});
+
+// removes the saved canvas from the local storage
+clearStorageBtn.addEventListener("click", () => {
+  localStorage.removeItem("savedCanvas");
+  activeToolEl.textContent = "Local Storage Cleared";
+  setTimeout(switchToBrush, 1500);
 });
 
 /* functions to call on load */
