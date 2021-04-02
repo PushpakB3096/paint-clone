@@ -5,6 +5,8 @@ const brushColorBtn = document.getElementById("brush-color");
 const brushIcon = document.getElementById("brush");
 const eraser = document.getElementById("eraser");
 const activeToolEl = document.getElementById("active-tool");
+const brushSlider = document.getElementById("brush-slider");
+const brushSize = document.getElementById("brush-size");
 
 /* global variables must be added here */
 let currentSize = 10;
@@ -53,6 +55,11 @@ function switchToBrush() {
   currentSize = 10;
 }
 
+// after user changes the brush size, this function is called to display the new size
+function displayBrushSize() {
+  brushSize.innerText = currentSize;
+}
+
 /* event listeners will go here */
 
 // Setting Background Color
@@ -82,6 +89,15 @@ eraser.addEventListener("click", () => {
   // user will now 'draw' with the canvas color, essentially erasing the content
   currentColor = bucketColor;
   currentSize = 50;
+});
+
+// setting brush size based on user input
+brushSlider.addEventListener("change", () => {
+  // getting the brush size from user and setting it as the size of the tool
+  const brushSizeVal = brushSlider.value;
+  currentSize = brushSizeVal;
+  // once the new size is set, display it on the UI
+  displayBrushSize();
 });
 
 // clicking on the brush icon should switch user back to using the brush
