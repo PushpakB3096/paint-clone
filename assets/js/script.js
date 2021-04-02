@@ -57,7 +57,17 @@ function switchToBrush() {
 
 // after user changes the brush size, this function is called to display the new size
 function displayBrushSize() {
-  brushSize.innerText = currentSize;
+  /**
+   * if the brush size is less than 10, then we need to prepend it with
+   * a '0' and display it. For eg., if the brush size is 6, then we need to show
+   * it as '06'.
+   * Display it as is when the brush size is 10 or more.
+   */
+  let brushSizeVal = currentSize;
+  brushSize.textContent = brushSizeVal;
+  if (currentSize < 10) {
+    brushSize.textContent = `0${brushSizeVal}`;
+  }
 }
 
 /* event listeners will go here */
