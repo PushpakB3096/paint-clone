@@ -1,63 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Paint Clone By Pushpak Bhattacharya</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"/>
-    <link rel="stylesheet" href="assets/style/style.css">
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/style/style.css" />
 
     <!-- Script to run -->
     <script src="assets/js/script.js" defer></script>
-    <!-- jscolor library script -->
+    <!-- JSColor library script -->
     <script src="assets/js/jscolor.js" defer></script>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Tool Bar -->
     <div class="top-bar">
-        <!-- Active Tool -->
-        <div class="active-tool">
-            <span id="active-tool" title="Active Tool">Brush</span>
-        </div>
-        <!-- Brush -->
-        <div class="brush tool">
-            <i class="fas fa-brush" id="brush" title="Brush"></i>
-            <input value="a51dab" class="jscolor" id="brush-color">
-            <span class="size" id="brush-size" title="Brush Size">10</span>
-            <input type="range" min="1" max="50" value="10" class="slider" id="brush-slider">
-        </div>
-        <!-- Bucket -->
-        <div class="bucket tool">
-            <i class="fas fa-fill-drip" title="Background Color"></i>
-            <input value="ffffff" class="jscolor" id="bucket-color">
-        </div>
-        <!-- Eraser -->
-        <div class="tool">
-            <i class="fas fa-eraser" id="eraser" title="Eraser"></i>
-        </div>
-        <!-- Clear Canvas -->
-        <div class="tool">
-            <i class="fas fa-undo-alt" id="clear-canvas" title="Clear"></i>
-        </div>
-        <!-- Save Local Storage -->
-        <div class="tool">
-            <i class="fas fa-download" id="save-storage" title="Save to Local Storage"></i>
-        </div>
-        <!-- Load Local Storage -->
-        <div class="tool">
-            <i class="fas fa-upload" id="load-storage" title="Load from Local Storage"></i>
-        </div>
-        <!-- Clear Local Storage -->
-        <div class="tool">
-            <i class="fas fa-trash-alt" id="clear-storage" title="Clear Local Storage"></i>
-        </div>
-        <!-- Download Image -->
-        <div class="tool">
-            <a id="download">
-                <i class="far fa-save" title="Save as Image"></i>
-            </a>
-        </div>
+      <!-- Active Tool -->
+      <div class="active-tool">
+        <span id="active-tool" title="Active Tool">Brush</span>
+      </div>
+      <!-- Brush -->
+      <div class="brush tool">
+        <i class="fas fa-brush" id="brush" title="Brush"></i>
+        <input value="a51dab" class="jscolor" id="brush-color" />
+        <span class="size" id="brush-size" title="Brush Size">10</span>
+        <input
+          type="range"
+          min="1"
+          max="50"
+          value="10"
+          class="slider"
+          id="brush-slider"
+        />
+      </div>
+      <!-- Bucket -->
+      <div class="bucket tool">
+        <i class="fas fa-fill-drip" title="Background Color"></i>
+        <input value="ffffff" class="jscolor" id="bucket-color" />
+      </div>
+      <!-- Eraser -->
+      <div class="tool">
+        <i class="fas fa-eraser" id="eraser" title="Eraser"></i>
+      </div>
+      <!-- Clear Canvas -->
+      <div class="tool">
+        <i class="fas fa-undo-alt" id="clear-canvas" title="Clear"></i>
+      </div>
+      <!-- Save Local Storage -->
+      <div class="tool">
+        <i
+          class="fas fa-download"
+          id="save-storage"
+          title="Save to Local Storage"
+        ></i>
+      </div>
+      <!-- Load Local Storage -->
+      <div class="tool">
+        <i
+          class="fas fa-upload"
+          id="load-storage"
+          title="Load from Local Storage"
+        ></i>
+      </div>
+      <!-- Clear Local Storage -->
+      <div class="tool">
+        <i
+          class="fas fa-trash-alt"
+          id="clear-storage"
+          title="Clear Local Storage"
+        ></i>
+      </div>
+      <!-- Download Image -->
+      <div class="tool">
+        <a id="download">
+          <i class="far fa-save" title="Save as Image"></i>
+        </a>
+      </div>
     </div>
-</body>
+
+    <!-- Message for mobile users -->
+    <div class="mobile-message">
+      <h2>Please use this application on a larger screen</h2>
+    </div>
+  </body>
 </html>
