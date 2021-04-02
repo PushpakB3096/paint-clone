@@ -48,6 +48,23 @@ body {
   color: rgb(223, 37, 37);
 }
 
+/* for the active tool */
+.active-tool {
+  position: absolute;
+  top: 9px;
+  left: 5px;
+}
+
+/* styling for active tool text */
+.active-tool > span {
+  background-color: rgb(82, 82, 82);
+  border-radius: 5px;
+  padding: 2.5px 16px;
+  color: white;
+  font-size: 20px;
+  user-select: none;
+}
+
 /* for JSColor - start */
 .jscolor {
   border-style: solid;
