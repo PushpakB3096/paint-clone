@@ -1,0 +1,31 @@
+{
+  "name": "paint-clone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PushpakB3096/paint-clone.git"
+  },
+  "author": "Pushpak Bhattacharya",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PushpakB3096/paint-clone/issues"
+  },
+  "homepage": "https://github.com/PushpakB3096/paint-clone#readme",
+  "dependencies": {
+    "jquery": "^3.5.1",
+    "lightbox2": "^2.11.3",
+    "slick-carousel": "^1.8.1"
+  },
+  "devDependencies": {
+    "css-loader": "^5.2.0",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.30.0",
+    "webpack-cli": "^4.6.0"
+  }
+}
