@@ -127,6 +127,7 @@ function restoreCanvas() {
 
 // function to clear the canvas
 clearCanvasBtn.addEventListener("click", () => {
+  // start with a fresh canvas
   createCanvas();
   drawnArray = [];
   // displays a message to notify user of the action
@@ -143,6 +144,8 @@ bucketColorBtn.addEventListener("change", () => {
   bucketColor = `#${bucketColorBtn.value}`;
   // fill the canvas with the new color selected
   createCanvas();
+  // restoring the canvas because setting the canvas color wipes out the drawn lines
+  restoreCanvas();
 });
 
 // Setting Brush Color
