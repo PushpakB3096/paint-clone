@@ -76,6 +76,40 @@ body {
   cursor: pointer;
   outline: none;
 }
+
+/* Custom Slider */
+.slider {
+  -webkit-appearance: none;
+  position: relative;
+  left: -8px;
+  width: 100px;
+  height: 10px;
+  background: rgb(177, 177, 177);
+  outline: none;
+  opacity: 0.7;
+  cursor: pointer;
+  -webkit-transition: 0.25s;
+  transition: opacity 0.25s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  background: rgb(47, 47, 47);
+}
+
+.slider::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  background: rgb(47, 47, 47);
+}
+
 /* for JSColor - end */
 
 /* for mobile screen message - start */
