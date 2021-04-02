@@ -1,4 +1,4 @@
-/* for JSColor */
+/* for JSColor - start */
 .jscolor {
   border-style: solid;
   border-radius: 5px;
@@ -9,8 +9,9 @@
   cursor: pointer;
   outline: none;
 }
+/* for JSColor - end */
 
-/* for mobile screen message */
+/* for mobile screen message - start */
 .mobile-message {
   display: none;
 }
@@ -28,3 +29,18 @@
     z-index: 100;
   }
 }
+/* for mobile screen message - end */
+
+/* canvas styling - start */
+
+/* TODO: background color will need to be changed  */
+canvas#canvas {
+  background-color: lightcoral;
+  position: absolute;
+  /* toolbar at the top has a height of 50px hence need to account for that */
+  top: 50px;
+  cursor: crosshair;
+  z-index: 10;
+}
+
+/* canvas styling - end */
