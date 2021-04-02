@@ -33,9 +33,7 @@
 
 /* canvas styling - start */
 
-/* TODO: background color will need to be changed  */
 canvas#canvas {
-  background-color: lightcoral;
   position: absolute;
   /* toolbar at the top has a height of 50px hence need to account for that */
   top: 50px;
